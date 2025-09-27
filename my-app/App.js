@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-import ForcaDesenho from './components/ForcaDesenho';
+import ForcaDesenho from './components/ForcaDesenho'; // Se você criou o componente de desenho da forca, se não, pode tirar essa linha e o componente abaixo
 
 const palavras = [
   'REACT', 'NATIVE', 'EXPO', 'JAVASCRIPT', 'PROGRAMA', 'INTERFACE', 'COMPONENTE',
@@ -58,7 +58,7 @@ export default function App() {
   const renderizarPalavra = () => {
     return palavra
       .split('')
-      .map((letra, index) => (letrasUsadas.includes(letra) || status !== 'jogando' ? letra : '_'))
+      .map((letra) => (letrasUsadas.includes(letra) || status !== 'jogando' ? letra : '_'))
       .join(' ');
   };
 
@@ -67,7 +67,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-     <ForcaDesenho erros={letrasErradas.length} />
+      {/* Se tiver o componente do desenho, descomente abaixo */}
+      {/* <ForcaDesenho erros={letrasErradas.length} /> */}
+
       <Text style={styles.titulo}>Jogo da Forca</Text>
 
       <Text style={styles.palavra}>{renderizarPalavra()}</Text>
